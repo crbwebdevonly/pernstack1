@@ -58,3 +58,6 @@ VALUES ('name3','location3',3);
 select * from tablename
 select * from restaurants; 
 select name,price_range from restaurants;
+
+-- update record
+UPDATE restaurants SET name = 'name update1', location = 'location update1', price_range = 2 where id =1;

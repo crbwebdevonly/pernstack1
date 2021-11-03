@@ -22,7 +22,7 @@ app.get("/test", (req, res) => {
 app.get("/api/v1/restaurants", async (req, res) => {
      try {
           const results = await db.query("select * from restaurants");
-          console.log(results);
+          // console.log(results);
           res.status(200).json({
                status: "success",
                nhits: results.rowCount,
@@ -83,31 +83,58 @@ app.post("/api/v1/restaurants/", async (req, res) => {
 //======================================================
 // UPDATEONErestaurants
 //======================================================
-app.put("/api/v1/restaurants/:id", (req, res) => {
+app.put("/api/v1/restaurants/:id", async (req, res) => {
      // console.count('//==app.get("/api/v1/restaurants/:id"=======');
      // console.log("(req.params.id>>>", req.params.id);
-     res.status(200).json({
-          status: "success",
-          data: {
-               restaurants: `req.params.id>>> ${req.params.id}`,
-               body: req.body,
-          },
+     const updateData = req.body;
+     const updateKeys = Object.keys(updateData);
+     updateKeys.forEach((e) => {
+          console.log(updateData);
+          console.log(updateKeys);
      });
+     try {
+          const reply = await db.query(
+               "UPDATE restaurants SET name = $2, location = $3, price_range = $4 where id = $1 returning *",
+               [
+                    req.params.id,
+                    updateData.name,
+                    updateData.location,
+                    updateData.price_range,
+               ]
+          );
+
+          res.status(200).json({
+               status: "success",
+               data: {
+                    restaurants: `req.params.id>>> ${req.params.id}`,
+                    body: req.body,
+                    updateItem: reply.rows[0],
+               },
+          });
+     } catch (error) {
+          res.status(400).json(error);
+     }
 });
 //======================================================
 //======================================================
 // deleteONErestaurants
 //======================================================
-app.delete("/api/v1/restaurants/:id", (req, res) => {
+app.delete("/api/v1/restaurants/:id", async (req, res) => {
      // console.count('//==app.get("/api/v1/restaurants/:id"=======');
      // console.log("(req.params.id>>>", req.params.id);
-     res.status(200).json({
-          status: "success",
-          data: {
-               restaurants: `req.params.id>>> ${req.params.id}`,
-               body: req.body,
-          },
-     });
+     try {
+          const reply = await db.query("DELETE FROM restaurants WHERE id = $1 returning *",[req.params.id])
+          res.status(200).json({
+               status: "success",
+               data: {
+                    restaurants: `req.params.id>>> ${req.params.id}`,
+                    deletReply: reply.rows[0],
+               },
+          });
+     } catch (error) {
+          res.status(400).json(error);
+     }
+    
 });
 //======================================================
 //======================================================
