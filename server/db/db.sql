@@ -61,3 +61,22 @@ select name,price_range from restaurants;
 
 -- update record
 UPDATE restaurants SET name = 'name update1', location = 'location update1', price_range = 2 where id =1;
+
+
+-- 
+-- 
+-- 
+-- 
+-- review table
+CREATE TABLE reviews (
+     id BIGSERIAL NOT NULL PRIMARY KEY,
+     restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+     name VARCHAR(30) NOT NULL,
+     review TEXT NOT NULL,
+      rating INT NOT NULL CHECK(rating >= 1 AND rating <=5)
+);
+
+insert into reviews (name,restaurant_id,review,rating) values('name1',6,'review1',5);  
+insert into reviews (name,restaurant_id,review,rating) values('name2',6,'review2',2);  
+insert into reviews (name,restaurant_id,review,rating) values('name2',7,'review2',2);  
+insert into reviews (name,restaurant_id,review,rating) values('name3',7,'review3',1);  selec

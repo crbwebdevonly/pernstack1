@@ -3,3 +3,127 @@
      padding: 0;
      box-sizing: border-box;
 }
+.header {
+     border: 2px solid blue;
+     margin: 20px;
+     padding: 20px;
+}
+.add-restaurant {
+     margin: 20px;
+     border: 2px solid green;
+     padding: 20px;
+}
+.form-1 {
+     display: flex;
+     gap: 20px;
+}
+
+.restaurant-list {
+     margin: 20px;
+     border: 2px solid yellow;
+     padding: 20px;
+}
+table {
+     border: 2px solid pink;
+     padding: 20px;
+}
+
+thead {
+     border: 1px solid red;
+}
+.tr-1 {
+     th,
+     td {
+          border: 1px solid grey;
+          padding: 5px;
+          width: 200px;
+          // display: flex;
+          // justify-content: center;
+          // align-items: center;
+          text-align: center;
+     }
+}
+
+tbody tr {
+     background-color: rgba(128, 128, 128, 0.274);
+     &:hover {
+          background-color: rgba(128, 128, 128, 0.459);
+     }
+}
+
+.edit {
+     cursor: pointer;
+     i {
+          color: green;
+     }
+     &:hover {
+          background-color: rgba(255, 166, 0, 0.685);
+     }
+}
+
+.delete {
+     //  display: flex;
+     cursor: pointer;
+     &:hover {
+          background-color: rgba(255, 0, 0, 0.548);
+     }
+     i {
+          color: red;
+     }
+}
+
+.update-page {
+     margin: 20px;
+     padding: 20px;
+     border: 2px solid blue;
+}
+
+.old {
+     background-color: rgba(128, 128, 128, 0.479);
+}
+
+.form-2 {
+     padding: 20px;
+     display: flex;
+     gap: 10px;
+     .item {
+          padding: 20px;
+          background-color: rgba(255, 166, 0, 0.445);
+     }
+}
+
+.restaurant-name {
+     cursor: pointer;
+     //  color: red;
+     //  height: 930px;
+     &:hover {
+          box-shadow: 0 0 5px 5px rgba(41, 209, 209, 0.508);
+          background-color: rgba(41, 209, 209, 0.308);
+     }
+}
+
+.details-page {
+     padding: 20px;
+     margin: 20px;
+     border: 2px solid blue;
+}
+
+.stars {
+     padding: 5px;
+     margin: 5px;
+     border: 1px solid green;
+     width: max-content;
+}
+
+.review-card {
+     padding: 10px;
+     margin: 10px;
+     border: 1px solid blue;
+     max-width: 250px;
+}
+.reviews-wrap {
+     padding: 20px;
+     display: flex;
+     flex-wrap: wrap;
+     border: 2px solid green;
+}
